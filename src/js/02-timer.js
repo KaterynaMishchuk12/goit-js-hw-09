@@ -1,5 +1,6 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import Notiflix from 'notiflix';
 
 const TIMER_DELAY = 1000;
 let selectedDate = null;
@@ -23,7 +24,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0].getTime() < Date.now()) {
-      alert`Please choose a date in the future!`;
+      Notiflix.Report.warning(`Please choose a date in the future!`);
     } else {
       selectedDate = selectedDates[0].getTime();
       startBtn.disabled = false;

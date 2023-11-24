@@ -1,4 +1,4 @@
-// console.log('how do you do');
+import Notiflix from 'notiflix';
 
 const form = document.querySelector('form.form');
 const delay = document.querySelector('input[name=delay]');
@@ -32,10 +32,10 @@ function onCreatePromiseClick(event) {
 
     createPromise(i, inputDelay)
       .then(({ position, delay }) => {
-        console.log(`Fulfilled promise ${position} in ${delay}ms`);
+        Notiflix.Notify.success(`Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        console.log(`Rejected promise ${position} in ${delay}ms`);
+        Notiflix.Report.failure(`Rejected promise ${position} in ${delay}ms`);
       });
   }
 }
