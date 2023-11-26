@@ -28,14 +28,14 @@ function onCreatePromiseClick(event) {
   let inputAmount = Number(amount.value);
 
   for (let i = 1; i <= inputAmount; i += 1) {
-    inputDelay += inputStep;
+    let promiseDelay = inputDelay + inputStep * i;
 
-    createPromise(i, inputDelay)
+    createPromise(i, promiseDelay)
       .then(({ position, delay }) => {
         Notiflix.Notify.success(`Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        Notiflix.Report.failure(`Rejected promise ${position} in ${delay}ms`);
+        Notiflix.Notify.failure(`Rejected promise ${position} in ${delay}ms`);
       });
   }
 }

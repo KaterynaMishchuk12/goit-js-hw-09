@@ -61,8 +61,14 @@ const timer = {
       timerComponents(convertMs(deltaTime));
       startBtn.disabled = true;
       input.disabled = true;
+
+      if (deltaTime <= 1000) {
+        timer.stop();
+        Notiflix.Notify.success(`Congratulations! The timer has stopped!`);
+      }
     }, TIMER_DELAY);
   },
+
   stop() {
     clearInterval(intervalId);
     startBtn.disabled = false;
